@@ -1,0 +1,17 @@
+server:
+  port: 2020
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          filters:
+            - name: RequestRateLimiter
+              args:
+                key-resolver: "#{@testResolver}"
+                redis-rate-limiter.replenishRate: 10
+                redis-rate-limiter.burstCapacity: 20
+          predicates:
+            - Path=/auth-service/**
