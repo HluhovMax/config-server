@@ -6,7 +6,7 @@ spring:
     gateway:
       routes:
         - id: auth-service
-          uri: lb://auth-service
+          uri: lb://auth-service/
           filters:
             - name: RequestRateLimiter
               args:
@@ -15,3 +15,13 @@ spring:
                 redis-rate-limiter.burstCapacity: 20
           predicates:
             - Path=/auth-service/**
+#        - id: client-api
+#          uri: lb://client-api
+#          filters:
+#            - name: RequestRateLimiter
+#              args:
+#                key-resolver: "#{@testResolver}"
+#                redis-rate-limiter.replenishRate: 10
+#                redis-rate-limiter.burstCapacity: 20
+#          predicates:
+#              - Path=/client-api/**
