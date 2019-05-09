@@ -1,5 +1,0 @@
-server:
-  server:
-    servlet:
-      context-path: /client-api
-  port: 6767

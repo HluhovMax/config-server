@@ -10,5 +10,5 @@ spring:
 
 server:
   servlet:
-    context-path: /auth-service
+    context-path: /v1
   port: 9091
